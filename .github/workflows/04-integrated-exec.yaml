@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  inpecao:
+  inspecao:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,6 +23,7 @@ jobs:
 
   unidade:
     runs-on: ubutun-latest
+    needs: [inspecao]
 
     steps:
       - uses: actions/checkout@v4
@@ -38,6 +39,7 @@ jobs:
 
   e2e-tests:
     runs-on: ubutun-latest
+    needs: [inspecao]
 
     steps:
       - uses: actions/setup-node@v4
@@ -64,6 +66,7 @@ jobs:
 
   deploy:
     runs-on: ubutun-latest
+    needs: [E2E]
 
     steps:
       - name: Simulação do Deploy
