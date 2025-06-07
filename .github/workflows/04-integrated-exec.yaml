@@ -4,7 +4,7 @@ name: 'Execuçao Integrada'
 
 on:
   workflow_dispatch:
-    
+
 jobs:
   inpecao:
     runs-on: ubuntu-latest
@@ -12,11 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Instalando Yarn  
+      - name: Instalando Yarn
         run: npm install -g yarn
 
       - name: Instalando dependencias
-        run: yarn 
+        run: yarn
 
       - name: Checando padronização do código
         run: yarn lint
@@ -27,21 +27,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Instalando Yarn  
+      - name: Instalando Yarn
         run: npm install -g yarn
 
       - name: Instalando dependencias
-        run: yarn 
+        run: yarn
 
       - name: Executando testes de unidade
         run: yarn test
-
 
   e2e-tests:
     runs-on: ubutun-latest
 
     steps:
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
@@ -60,16 +58,13 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         if: ${{!cancelled()}}
-        with: 
+        with:
           name: report
           path: ./playwright-report
 
-  deploy: 
+  deploy:
     runs-on: ubutun-latest
 
     steps:
       - name: Simulação do Deploy
         run: echo "simulando o deploy com sucesso"
-        
-
-

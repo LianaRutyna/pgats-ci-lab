@@ -8,7 +8,7 @@ name: 'Execução Deploy'
 #gatilho de exec agendada = schedule
 #gatilho de exec a partir de outro pipe = workflow_run
 
-on: 
+on:
   workflow_run:
     workflows: ['Execução Manual']
     types:
@@ -17,9 +17,8 @@ on:
 #trabalhos/tarefas dentro do pipeline= jobs
 jobs:
   e2e-tests:
-
     #maquina que o job vai executar
-    runs-on:  ubuntu-latest
+    runs-on: ubuntu-latest
 
     #condicional - if
     #`${ expressao }`
@@ -55,6 +54,6 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         if: ${{!cancelled()}}
-        with: 
+        with:
           name: report
           path: ./playwright-report

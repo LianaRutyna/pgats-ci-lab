@@ -6,16 +6,15 @@ name: 'Execução Agendada'
 #regras de disparo (gatilhos/triggers)
 #gatilho de exec manual = workflow_dispatch
 
-on: 
-  schedule: 
+on:
+  schedule:
     - cron: '0 6 * * 0'
 
 #trabalhos/tarefas dentro do pipeline= jobs
 jobs:
   e2e-tests:
-
     #maquina que o job vai executar
-    runs-on:  ubuntu-latest
+    runs-on: ubuntu-latest
 
     #passos do script de build
     steps:
